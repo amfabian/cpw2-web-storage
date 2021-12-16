@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CPW2: Web Storage</title>
-  </head>
-  <body onload="load()">
-    <p id="text">Web storage</p>
 
-    <label for="color">Cor do fundo: </label>
-    <input type="color" id="color" onblur="changeColor()" />
-    <br />
-    <label for="font">Fonte do título do fundo: </label>
-    <!--
-      1 - Implemente um HTML select para trocar a fonte do texto Web Storage que, nesse projeto,
-      está contido em um parágrafo. Algumas regras devem ser observadas:
+    <style>
+        @font-face {
+            font-family: 'Bradley Hand';
+            src: url('Bradleys Pen.ttf') format('truetype');
+        }
+    </style>
+</head>
 
-        * O Identificador do HTML select (id) deve ser igual a "font"
-
-        * As opções do HTML select devem ser: Arial, Monaco e Bradley Hand
-    -->
-
+<body onload="load()">
+    <p id="text">Web storage</p><label for="color">Cor do fundo: </label><input type="color" id="color" onblur="changeColor()" /><br /><label for="font">Fonte do título do fundo: </label>
+    <p>
+        <!-- TROCA DA FONTE-->
+        <!-- IMPLEMENTADA A FUNÇÃO CHANGEFONT NO CARREGAMENTO DA PÁGINA--><select id="font" name="select" onchange="changeFont(this)"><option value="" disabled selected>Escolha uma fonte </option><option value="Arial">Arial </option><option value="fantasy">Monaco </option><option value="Bradley Hand">Bradley Hand </option></select></p>
     <script>
-      /**
-       * Troca a cor do fundo da página
-       */
-      function changeColor() {
-        let inputColor = document.getElementById("color");
-        document.body.style.backgroundColor = inputColor.value;
-        // Armazena no localStorage
-        localStorage.setItem("color", inputColor.value);
-      }
-
-      /**
-       * Troca a fonte do elemento onde o id é "text"
-       */
-      function changeFont() {
         /**
-         * 2 - Implemente o corpo do método `changeFont`. Este método deve ser capaz
-         * de trocar a fonte do texto `Web Storage` e também salvar o valor
-         * escolhido no no local *localStorage* sempre que o usuário selecionar
-         * o tipo da fonte por meio do HTML select.
+         * Troca a cor do fundo da página
          */
-      }
 
-      /**
-       * Inicializa o localStorage
-       */
-      function load() {
-        document.body.style.backgroundColor = localStorage.getItem("color");
-        /**
-         * 3 - Altere o método `load` para recuperar o nome da fonte do *localStorage* e
-         * estilizar o texto `Web Storage`
-         */
-      }
+        function changeColor() {
+            let inputColor = document.getElementById("color");
+            document.body.style.backgroundColor = inputColor.value;
+            // Armazena no localStorage
+            localStorage.setItem("color", inputColor.value);
+        }
+
+        function changeFont() {
+            //IMPLEMENTAÇÃO DA FUNÇÃO PARA TROCA DA FONTE E SAVE NO LOCALSTORAGE
+            let listFont = document.getElementById("text");
+            document.body.style.fontFamily = font.value;
+            localStorage.setItem("font", listFont.value);
+        }
+
+        function load() {
+            document.body.style.backgroundColor = localStorage.getItem("color");
+            //ARMAZENAMENTO DA FONTE NO LOCALSTORAGE
+            document.body.style.fontFamily = localStorage.getItem("font");
+            /**
+             * 3 - Altere o método `load` para recuperar o nome da fonte do *localStorage* e
+             * estilizar o texto `Web Storage`
+             */
+        }
     </script>
-  </body>
+</body>
+
 </html>
