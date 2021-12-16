@@ -11,7 +11,16 @@
     <style>
         @font-face {
             font-family: 'Bradley Hand';
-            src: url('Bradleys Pen.ttf') format('truetype');
+            src: url('fonts/Bradleys\ Pen.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'Monaco';
+            src: url('fonts/monaco.ttf') format('truetype');
+        }
+        
+        body {
+            font-size: 2em;
         }
     </style>
 </head>
@@ -20,12 +29,8 @@
     <p id="text">Web storage</p><label for="color">Cor do fundo: </label><input type="color" id="color" onblur="changeColor()" /><br /><label for="font">Fonte do título do fundo: </label>
     <p>
         <!-- TROCA DA FONTE-->
-        <!-- IMPLEMENTADA A FUNÇÃO CHANGEFONT NO CARREGAMENTO DA PÁGINA--><select id="font" name="select" onchange="changeFont(this)"><option value="" disabled selected>Escolha uma fonte </option><option value="Arial">Arial </option><option value="fantasy">Monaco </option><option value="Bradley Hand">Bradley Hand </option></select></p>
+        <!-- IMPLEMENTADA A FUNÇÃO CHANGEFONT NO CARREGAMENTO DA PÁGINA--><select id="font" name="select" onchange="changeFont(this)"><option value="" disabled selected>Escolha uma fonte </option><option value="Arial">Arial </option><option value="Monaco">Monaco </option><option value="Bradley Hand">Bradley Hand </option></select></p>
     <script>
-        /**
-         * Troca a cor do fundo da página
-         */
-
         function changeColor() {
             let inputColor = document.getElementById("color");
             document.body.style.backgroundColor = inputColor.value;
@@ -37,17 +42,14 @@
             //IMPLEMENTAÇÃO DA FUNÇÃO PARA TROCA DA FONTE E SAVE NO LOCALSTORAGE
             let listFont = document.getElementById("text");
             document.body.style.fontFamily = font.value;
-            localStorage.setItem("font", listFont.value);
+            localStorage.setItem("font", font.value);
         }
 
         function load() {
             document.body.style.backgroundColor = localStorage.getItem("color");
             //ARMAZENAMENTO DA FONTE NO LOCALSTORAGE
             document.body.style.fontFamily = localStorage.getItem("font");
-            /**
-             * 3 - Altere o método `load` para recuperar o nome da fonte do *localStorage* e
-             * estilizar o texto `Web Storage`
-             */
+
         }
     </script>
 </body>
