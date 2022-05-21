@@ -1,5 +1,6 @@
 # CPW2: Web Storage
 
+
 Implemente um trecho de código com `Web Storage` capaz de salvar a cor do fundo e a fonte utilizada na página. Assim, quando o um usuário reabrir o seu navegador o sistema deve mostrar a cor de fundo e a fonte salvas anteriormente.
 
 ## Issues
